@@ -3,46 +3,39 @@ const container = document.getElementById("container");
 
 
 
-
 function createGrid() {
-
-    for (i = 0; i < 32; i++) {
-        const rows = document.createElement("div");
-        rows.id=""+i;
-        container.appendChild(rows).className = "grid-items";
+    size = prompt('Please enter the side of the grid(max 100):');
+    while(size>100){
+        size = prompt('Please enter the side of the grid(max 100):');
 
     }
-
+    for (i = 0; i < size; i++) {
+        let rows = document.createElement("div");
+        rows.id = "grid-items";
+        container.appendChild(rows).className = "grid-items";
+        rows.addEventListener("mouseover",paint);
+    }
 
 }
 
-//     const rows = [];
-// for (i = 0; i < 32; i++) {
-//     rows[i] = document.createElement("div");
-//     container.appendChild(rows[i]).className = "grid-items";
 
-// }
-createGrid();
+
 function reset() {
-	for(var i = 0; i < rows.length; i++){
-		rows[i].style.backgroundColor = "white";
-	}
+    const items = document.getElementsByClassName("grid-items");
+   while(items[0]){
+       items[0].parentNode.removeChild(items[0]);
+
+   }
+
+    createGrid();
 }
 
-    // window.addEventListener('mouseover',function(e){
-    //     const item = e;
-    //     console.log(item);
-    // });
+
+function paint(e) {
+    e.target.style.backgroundColor= "black";
+
+}
 
 
 
-
-// for (var i = 0; i < rows.length; i++) {
-//     rows[i].style.backgroundColor = "black";
-
-//     if(rows[i].onmouseover==true){
-//         rows[i].style.backgroundColor = "white";
-
-//     }
-// }
 
